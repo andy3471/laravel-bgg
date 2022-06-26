@@ -1,6 +1,6 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Models;
 
-use AndyH\Traits\BggLinkable;
+use AndyH\LaravelBgg\Traits\BggApiable;
+use AndyH\LaravelBgg\Traits\BggLinkable;
 use Illuminate\Database\Eloquent\Model;
 
 class BoardGameCategory extends Model

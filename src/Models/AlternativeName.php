@@ -1,8 +1,7 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Services;
 
-use AndyH\Traits\BggApiable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 

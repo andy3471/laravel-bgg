@@ -1,24 +1,11 @@
 <?php
 
-namespace AndyH\Traits;
+namespace AndyH\LaravelBgg\Traits;
 
-use AndyH\Services\BggClient;
-use phpDocumentor\Reflection\Types\Self_;
+use AndyH\LaravelBgg\Services\BggClient;
 
 trait BggApiable
 {
-    public function getDetailsFromBgg()
-    {
-        $bgg = new BggClient();
-        return $bgg->getThingById($this->bgg_id);
-    }
-
-    public function shouldBeUpdatedFromBgg()
-    {
-//        TODO - Implement setting for cahcing time BGGs
-        return $this->bgg_id && ( $this->bgg_last_scraped_at == null || $this->bgg_last_scraped_at->diffInDays(now()) > 7  );
-    }
-
     static function bggSearchRaw($search)
     {
         $bgg = new BggClient();
@@ -45,24 +32,12 @@ trait BggApiable
         return $collection;
     }
 
-    public function scrapeFromBgg()
-    {
-        $bgg = new BggClient();
-        $details = $bgg->getThingById($this->bgg_id);
-        $details = self::transformBggDetails($details);
-        $this->update($details);
-        $this->bgg_last_scraped_at = now();
-        $this->save();
-        return $this;
-    }
-
-    static function modelsToBeScraped()
+    public function scopeToBeScraped($query)
     {
 //        TODO - Implement a scraped at config
-        return self::where('bgg_id', '!=', null)
+        return $query::where('bgg_id', '!=', null)
             ->where('bgg_last_scraped_at', '<', now()->subDays(7))
-            ->orWhere('bgg_last_scraped_at', null)
-            ->get();
+            ->orWhere('bgg_last_scraped_at', null);
     }
 
     static function findByBggId($bggId)
@@ -76,7 +51,6 @@ trait BggApiable
                 $details = $bgg->getThingById($bggId);
                 $details = self::transformBggDetails($details);
             } catch (\Exception $e) {
-//                TODO
                 return null;
             }
 
@@ -88,6 +62,29 @@ trait BggApiable
             $item->save();
         }
         return $item;
+    }
+
+    public function scrapeFromBgg()
+    {
+        $bgg = new BggClient();
+        $details = $bgg->getThingById($this->bgg_id);
+        $details = self::transformBggDetails($details);
+        $this->update($details);
+        $this->bgg_last_scraped_at = now();
+        $this->save();
+        return $this;
+    }
+
+    public function getDetailsFromBgg()
+    {
+        $bgg = new BggClient();
+        return $bgg->getThingById($this->bgg_id);
+    }
+
+    public function shouldBeUpdatedFromBgg()
+    {
+//        TODO - Implement setting for cahcing time BGGs
+        return $this->bgg_id && ( $this->bgg_last_scraped_at == null || $this->bgg_last_scraped_at->diffInDays(now()) > 7  );
     }
 
 }

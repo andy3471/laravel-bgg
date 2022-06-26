@@ -1,8 +1,8 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Models;
 
-use AndyH\Traits\BggLinkable;
+use AndyH\LaravelBgg\Traits\BggLinkable;
 use Illuminate\Database\Eloquent\Model;
 
 class Designer extends Model

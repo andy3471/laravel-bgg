@@ -1,10 +1,14 @@
-# Very short description of the package
+# Laravel-BGG
+
+# This package is in development and not yet released.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/andy3471/laravel-bgg.svg?style=flat-square)](https://packagist.org/packages/andy3471/laravel-bgg)
 [![Total Downloads](https://img.shields.io/packagist/dt/andy3471/laravel-bgg.svg?style=flat-square)](https://packagist.org/packages/andy3471/laravel-bgg)
 ![GitHub Actions](https://github.com/andy3471/laravel-bgg/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+
+
+This package allows you to pull data from the board game geek api
 
 ## Installation
 

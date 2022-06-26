@@ -1,6 +1,6 @@
 <?php
 
-namespace AndyH\Traits;
+namespace AndyH\LaravelBgg\Traits;
 
 trait BggLinkable
 {

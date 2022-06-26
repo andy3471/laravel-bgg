@@ -1,12 +1,13 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Models;
 
-use AndyH\Traits\BggApiable;
+use AndyH\LaravelBgg\Contracts\BggApi;
+use AndyH\LaravelBgg\Traits\BggApiable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
-class BoardGame extends Model
+class BoardGame extends Model implements BggApi
 {
     use BggApiable, Searchable;
 
@@ -16,6 +17,7 @@ class BoardGame extends Model
 
     static function transformBggDetails($details)
     {
+        // dd($details);
         return [
             'name' => $details->name->attributes()->value->__toString(),
             'description' => $details->description->__toString(),
@@ -27,6 +29,11 @@ class BoardGame extends Model
             'year_published' => $details->yearpublished->attributes()->value->__toString(),
 //            TODO - categories, mechanics, designers, artists, publishers, expansions, integration
         ];
+    }
+
+    static function getBggType()
+    {
+        return self::$bggType;
     }
 
     // Relations

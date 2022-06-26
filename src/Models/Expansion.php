@@ -1,9 +1,9 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Models;
 
-use AndyH\Traits\BggApiable;
-use AndyH\Traits\BggLinkable;
+use AndyH\LaravelBgg\Traits\BggApiable;
+use AndyH\LaravelBgg\Traits\BggLinkable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
@@ -17,6 +17,8 @@ class Expansion extends Model
 
     static function transformBggDetails($details)
     {
+
+    dd($details);
         return [
             'name' => $details->name->__toString(),
             'description' => $details->description->__toString(),
@@ -28,6 +30,11 @@ class Expansion extends Model
             'year_published' => $details->yearpublished->attributes()->value->__toString(),
 //            TODO - categories, mechanics, designers, artists, publishers
         ];
+    }
+
+    static function getBggType()
+    {
+        return self::$bggType;
     }
 
     // Relations

@@ -1,8 +1,8 @@
 <?php
 
-namespace AndyH\Models;
+namespace AndyH\LaravelBgg\Models;
 
-use AndyH\Traits\BggLinkable;
+use AndyH\LaravelBgg\Traits\BggLinkable;
 use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
@@ -10,7 +10,6 @@ class Publisher extends Model
     use BggLinkable;
 
     static string $bggType = 'boardgamepublisher';
-
 
     public function boardGames()
     {
