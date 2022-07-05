@@ -9,7 +9,7 @@ class Mechanic extends Model
 {
     use BggLinkable;
 
-    static string $bggType = 'boardgamemechanic';
+    public static string $bggType = 'boardgamemechanic';
 
     public function boardGames()
     {
@@ -20,5 +20,4 @@ class Mechanic extends Model
     {
         return $this->morphedByMany(Expansion::class, 'mechanicable');
     }
-
 }

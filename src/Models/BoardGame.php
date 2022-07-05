@@ -13,9 +13,9 @@ class BoardGame extends Model implements BggApi
 
     protected $fillable = ['description'];
 
-    static string $bggType = 'boardgame';
+    public static string $bggType = 'boardgame';
 
-    static function transformBggDetails($details)
+    public static function transformBggDetails($details)
     {
         // dd($details);
         return [
@@ -27,11 +27,11 @@ class BoardGame extends Model implements BggApi
             'min_play_time' => $details->minplaytime->attributes()->value->__toString(),
             'max_play_time' => $details->maxplaytime->attributes()->value->__toString(),
             'year_published' => $details->yearpublished->attributes()->value->__toString(),
-//            TODO - categories, mechanics, designers, artists, publishers, expansions, integration
+            //            TODO - categories, mechanics, designers, artists, publishers, expansions, integration
         ];
     }
 
-    static function getBggType()
+    public static function getBggType()
     {
         return self::$bggType;
     }

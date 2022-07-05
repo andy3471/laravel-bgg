@@ -9,7 +9,7 @@ class Artist extends Model
 {
     use BggLinkable;
 
-    static string $bggType = 'boardgameartist';
+    public static string $bggType = 'boardgameartist';
 
     public function boardGames()
     {
@@ -20,5 +20,4 @@ class Artist extends Model
     {
         return $this->morphedByMany(Expansion::class, 'artistable');
     }
-
 }

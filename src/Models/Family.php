@@ -9,7 +9,9 @@ class Family extends Model
 {
     use BggLinkable;
 
-    static string $bggType = 'boardgamefamily';
+    protected $fillable = ['bgg_id', 'name'];
+
+    public static string $bggType = 'boardgamefamily';
 
     public function boardGames()
     {
@@ -20,5 +22,4 @@ class Family extends Model
     {
         return $this->morphedByMany(Expansion::class, 'familyable');
     }
-
 }

@@ -4,8 +4,7 @@ namespace AndyH\LaravelBgg\Contracts;
 
 interface BggApi
 {
-    static function transformBggDetails($details);
+    public static function transformBggDetails($details);
 
-    static function getBggType();
-
+    public static function getBggType();
 }

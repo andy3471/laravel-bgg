@@ -9,7 +9,7 @@ class Designer extends Model
 {
     use BggLinkable;
 
-    static string $bggType = 'boardgamedesigner';
+    public static string $bggType = 'boardgamedesigner';
 
     public function boardGames()
     {

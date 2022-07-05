@@ -2,7 +2,6 @@
 
 namespace AndyH\LaravelBgg\Models;
 
-use AndyH\LaravelBgg\Traits\BggApiable;
 use AndyH\LaravelBgg\Traits\BggLinkable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +9,7 @@ class BoardGameCategory extends Model
 {
     use BggLinkable;
 
-    static string $bggType = 'boardgamecategory';
+    public static string $bggType = 'boardgamecategory';
 
     public function boardGames()
     {

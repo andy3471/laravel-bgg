@@ -9,7 +9,7 @@ class Publisher extends Model
 {
     use BggLinkable;
 
-    static string $bggType = 'boardgamepublisher';
+    public static string $bggType = 'boardgamepublisher';
 
     public function boardGames()
     {
@@ -20,5 +20,4 @@ class Publisher extends Model
     {
         return $this->morphedByMany(Expansion::class, 'publisherable');
     }
-
 }

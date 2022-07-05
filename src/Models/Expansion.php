@@ -11,14 +11,14 @@ class Expansion extends Model
 {
     use BggApiable, BggLinkable, Searchable;
 
-    static string $bggType = 'boardgameexpansion';
+    public static string $bggType = 'boardgameexpansion';
 
     protected $fillable = ['description'];
 
-    static function transformBggDetails($details)
+    public static function transformBggDetails($details)
     {
+        dd($details);
 
-    dd($details);
         return [
             'name' => $details->name->__toString(),
             'description' => $details->description->__toString(),
@@ -28,11 +28,11 @@ class Expansion extends Model
             'min_play_time' => $details->minplaytime->attributes()->value->__toString(),
             'max_play_time' => $details->maxplaytime->attributes()->value->__toString(),
             'year_published' => $details->yearpublished->attributes()->value->__toString(),
-//            TODO - categories, mechanics, designers, artists, publishers
+            //            TODO - categories, mechanics, designers, artists, publishers
         ];
     }
 
-    static function getBggType()
+    public static function getBggType()
     {
         return self::$bggType;
     }
