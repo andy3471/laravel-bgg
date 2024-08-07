@@ -5,11 +5,10 @@ namespace AndyH\LaravelBgg\Models;
 use AndyH\LaravelBgg\Traits\BggApiable;
 use AndyH\LaravelBgg\Traits\BggLinkable;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Expansion extends Model
 {
-    use BggApiable, BggLinkable, Searchable;
+    use BggApiable, BggLinkable;
 
     public static string $bggType = 'boardgameexpansion';
 

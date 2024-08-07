@@ -5,11 +5,10 @@ namespace AndyH\LaravelBgg\Models;
 use AndyH\LaravelBgg\Contracts\BggApi;
 use AndyH\LaravelBgg\Traits\BggApiable;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class BoardGame extends Model implements BggApi
 {
-    use BggApiable, Searchable;
+    use BggApiable;
 
     protected $fillable = ['description'];
 
